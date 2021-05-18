@@ -2,6 +2,9 @@ import { useMemo } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router';
 import { getHeroById } from '../utils/heroes.util';
 
+// @ts-ignore
+const heroImages = require.context('../assets/img', true);
+
 interface IParams {
 	heroid: string;
 }
@@ -22,7 +25,7 @@ export const Hero = () => {
 		<div className="row mt-3">
 			<div className="col-xs-12 col-md-4">
 				<img
-					src={`../img/${heroid}.jpg`}
+					src={heroImages(`./${heroid}.jpg`).default}
 					alt={heroid}
 					className="img-thumbnail animate__animated animate__fadeInLeft"
 				/>

@@ -1,14 +1,12 @@
 export type Publisher = 'DC Comics' | 'Marvel Comics';
 
-export class Hero {
-	constructor(
-		public id: string,
-		public superhero: string,
-		public publisher: Publisher,
-		public alter_ego: string,
-		public first_appearance: string,
-		public characters: string
-	) {}
+export interface Hero {
+	id: string;
+	superhero: string;
+	publisher: Publisher;
+	alter_ego: string;
+	first_appearance: string;
+	characters: string;
 }
 
 export const heroes: Hero[] = [

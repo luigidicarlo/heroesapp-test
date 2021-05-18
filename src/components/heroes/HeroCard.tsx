@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Hero } from '../../data';
 
+// @ts-ignore
+const heroImages = require.context('../../assets/img', true);
+
 interface IProps {
 	hero: Hero;
 }
@@ -12,7 +15,7 @@ export const HeroCard = ({ hero }: IProps) => {
 				<div className="col-md-4">
 					<img
 						className="card-img"
-						src={`./img/${hero.id}.jpg`}
+						src={heroImages(`./${hero.id}.jpg`).default}
 						alt={hero.id}
 					/>
 				</div>
