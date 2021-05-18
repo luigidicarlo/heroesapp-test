@@ -25,3 +25,6 @@ export const getHeroByQuery = (q: string) => {
 		);
 	});
 };
+
+// @ts-ignore
+export const heroImages = require.context('../assets/img', true);

@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Hero } from '../../data';
-
-// @ts-ignore
-const heroImages = require.context('../../assets/img', true);
+import { heroImages } from '../../utils/heroes.util';
 
 interface IProps {
 	hero: Hero;

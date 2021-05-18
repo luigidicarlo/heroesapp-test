@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router';
-import { getHeroById } from '../utils/heroes.util';
-
-// @ts-ignore
-const heroImages = require.context('../assets/img', true);
+import { getHeroById, heroImages } from '../utils/heroes.util';
 
 interface IParams {
 	heroid: string;
