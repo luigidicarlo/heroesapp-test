@@ -1,0 +1,8 @@
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { createSerializer } from 'enzyme-to-json';
+
+// @ts-ignore
+expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }));
+// @ts-check
+Enzyme.configure({ adapter: new Adapter() });
