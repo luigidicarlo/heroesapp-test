@@ -1,11 +1,24 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, NavLink, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../auth/AuthContext';
+import { actions } from '../../auth/authReducer';
 
 export const Navbar = () => {
+	const history = useHistory();
+	const { user, dispatch } = useContext(AuthContext);
+
+	const onLogout = () => {
+		dispatch({
+			type: actions.logout,
+			payload: { name: '', isLoggedIn: false },
+		});
+		history.push('/login');
+	};
+
 	return (
 		<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
 			<Link className="navbar-brand" to="/">
-				Asociaciones
+				Superheroes
 			</Link>
 
 			<div className="navbar-collapse">
@@ -40,14 +53,14 @@ export const Navbar = () => {
 
 			<div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
 				<ul className="navbar-nav ml-auto">
-					<NavLink
-						activeClassName="active"
-						className="nav-item nav-link"
-						exact
-						to="/login"
-					>
-						Logout
-					</NavLink>
+					{user ? (
+						<span className="nav-item nav-link text-info">{user.name}</span>
+					) : (
+						''
+					)}
+					<button className="btn btn-outline-danger" onClick={onLogout}>
+						Log out
+					</button>
 				</ul>
 			</div>
 		</nav>
